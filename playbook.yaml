@@ -1,0 +1,5 @@
+- hosts: prod
+  roles:
+    - { role: install_docker }
+    - { role: build_docker_image }
+    - { role: install_webapp }
