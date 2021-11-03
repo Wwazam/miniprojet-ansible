@@ -1,2 +1,7 @@
 ---
-# tasks file for roles/webapp
+- name: Start webapp
+  community.docker.docker_container:
+    name: webapp
+    image: wwazam/webapp
+    ports: "80:80"
+    publish_all_ports: true
