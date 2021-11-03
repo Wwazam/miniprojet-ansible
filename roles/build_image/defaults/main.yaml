@@ -1,0 +1,5 @@
+system_user: vagrant
+project_dir: /home/{{ system_user }}/webapp
+welcome: Bienvenue sur le serveur {{ ansible_hostname }}
+docker_user: wwazam
+image_name: webapp

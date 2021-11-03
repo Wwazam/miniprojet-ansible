@@ -1,4 +1,5 @@
 - hosts: client1
   roles:
     - { role: docker }
+    - { role: build_image }
     - { role: webapp }

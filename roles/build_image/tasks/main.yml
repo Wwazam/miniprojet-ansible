@@ -1,0 +1,35 @@
+---
+- name: Setup compose dir structure
+  file:
+    path: "{{ project_dir }}"
+    state: directory
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    recurse: yes
+    mode: 0775
+  become: yes
+
+- name: template html
+  template:
+    src: index.html
+    dest: "{{ project_dir }}/index.html"
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    mode: 0775
+  become: yes
+
+- name: Dockerfile
+  template:
+    src: Dockerfile
+    dest: "{{ project_dir }}/Dockerfile"
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    mode: 0775
+  become: yes
+
+- name: build container image
+  community.docker.docker_image:
+    name: wwazam/webapp:v1.0
+    build:
+      path: "{{ project_dir }}"
+    source: build
