@@ -1,5 +1,17 @@
+---
 - hosts: client1
+  name: setup
+  vars_files:
+    - secrets/credentials.yaml
   roles:
-    - { role: docker }
-    - { role: build_image }
-    - { role: webapp }
+    - docker
+
+- hosts: client1
+  name: build and install
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - secrets/credentials.yaml
+  roles:
+    - build_image
+    - webapp
