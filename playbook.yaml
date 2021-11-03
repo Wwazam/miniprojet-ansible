@@ -1,4 +1,4 @@
-- hosts: prod
+- hosts: client1
   roles:
     - { role: docker }
     - { role: webapp }
